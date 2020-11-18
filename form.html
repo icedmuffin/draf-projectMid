@@ -10,8 +10,17 @@
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 	<script type="text/javascript" src="js/jquery.seat-charts.js"></script>
+
 	<link rel="stylesheet" href="css/jquery.seat-charts.css">
 	<link rel="stylesheet" href="css/editan.css">
+
+	<!--form-->
+	<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+	<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+	<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+
+
 	<style>
 		a.biru {
 			color: rgb(53, 53, 91);
@@ -158,6 +167,50 @@
 	</style>
 
 	<script>
+		//atur notif hasil dan error 
+		$(document).ready(function () {
+			$('.error').hide();
+			$('.submit').click(function (event) {
+				var data = $('.infobox').val();
+				var len = data.length;
+				if (len < 1) {
+					$('.error').show();
+					event.preventDefault();
+				}
+				else {
+					$('.error').hide();
+				}
+			});
+		});
+
+		//script scrolling
+		$(document).ready(function () {
+			// Add smooth scrolling to all links
+			$("a").on('click', function (event) {
+
+				// Make sure this.hash has a value before overriding default behavior
+				if (this.hash !== "") {
+					// Prevent default anchor click behavior
+					event.preventDefault();
+
+					// Store hash
+					var hash = this.hash;
+
+					// Using jQuery's animate() method to add smooth page scroll
+					// The optional number (800) specifies the number of milliseconds it takes to scroll to the specified area
+					$('html, body').animate({
+						scrollTop: $(hash).offset().top
+					}, 800, function () {
+
+						// Add hash (#) to URL when done scrolling (default click behavior)
+						window.location.hash = hash;
+					});
+				} // End if
+			});
+		});
+
+
+		//script kursi
 		var price = 100; //price
 		$(document).ready(function () {
 			var $cart = $('#selected-seats'), //Sitting Area
@@ -232,6 +285,7 @@
 <body>
 
 	<div class="container-fluid">
+
 		<!-- kotak header -->
 		<div class="container-fluid" style="padding: 0%; margin: 0%;">
 			<!-- tag universal -->
@@ -258,12 +312,17 @@
 
 		</div>
 
-		<div class="alert alert-primary">
+		<div class="alert alert-warning alert-dismissible">
 			booking tiketmu sekarang!
+			<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
 		</div>
 
 		<!-- kotak konten -->
 		<div class="container-fluid">
+			<div class="note rounded-top">
+				<p style="text-align: center;">pilih seat mu</p>
+			</div>
+
 			<div class="row">
 				<!-- kotak seat -->
 				<div class="col" align="center">
@@ -285,42 +344,98 @@
 						<p>Tickets: <span id="counter">0</span></p>
 						<p>Total: <b>Rp<span id="total">0</span>.000</b></p>
 
-						<button class="btn btn-primary">Booking sekarang</button>
+						<button class="btn btn-primary"><a href="#section2"
+								style="text-decoration: none; color: white;">Booking
+								sekarang</a></button>
+
+
 
 
 					</div>
 				</div>
 			</div>
 
-			<div class="container-fluid" style="margin-top: 5%;">
+			<div class="container-fluid" style="margin-top: 5%; padding: 0%;">
 				<div class="row">
 					<!--kotak form kanan-->
-					<div class="col border-right" style=" padding: 2%;">
-						<p style="text-align: center;">registrasi pengguna baru</p>
-						<div class="form-group row">
-							<label for="usr">Nama Lengkap : </label>
-							<div class="col-xs-8">
-								<input type="text" class="form-control form-rounded" id="usr"
-									style="background-color: #fdfdfd;">
-							</div>
-						</div>
-						<div class="form-group row">
-							<div class="col-xs-4">
-								<label for="usr">email :</label>
-							</div>
-							<div class="col-xs-8">
-								<input type="email" class="form-control form-rounded" id="mail">
-							</div>
-						</div>
-						<div class="form-group row">
-							<label for="pwd">Password :</label>
-							<div class="col-xs-8">
-								<input type="password" class="form-control form-rounded" id="pwd">
+					<div id="section2"></div>
+					<div class="col-md-7 border-right" style=" padding: 2%;">
+
+
+						<div class="container-fluid register-form ">
+							<div class="form">
+								<div class="note rounded">
+									<p style="text-align: center;">registrasi pengguna baru</p>
+								</div>
+
+								<div class="form-content rounded">
+									<div class="row">
+										<div class="col-md-7">
+
+											<!--tanya nama-->
+											<p style="margin: 0%; padding-left: 4%;">*nama : </p>
+											<div class="form-group">
+												<input type="text" name="name" class="form-control infobox"
+													name="userid" placeholder="Your Name " value="" />
+												<p style="color: red;" class="error"> wajib
+													diisi</p>
+											</div>
+
+											<!--tanya nomor hp-->
+											<p style="margin: 0%; padding-left: 4%;">*Nomor handphone :</p>
+											<div class="form-group">
+												<input type="text" class="form-control infobox" name="userid"
+													placeholder=" ex : 082xxx" value="" />
+												<p style="color: red;" class="error"> wajib
+													diisi</p>
+											</div>
+
+											<!--tanya email-->
+											<p style="margin: 0%; padding-left: 4%;">*Email :</p>
+											<div class="form-group">
+												<input type="text" class="form-control infobox" name="userid"
+													placeholder="ex : cinema21@mail.com" value="" />
+												<p style="color: red;" class="error"> wajib
+													diisi</p>
+											</div>
+
+											<!--tanya password-->
+											<p style="margin: 0%; padding-left: 4%;">*Password :</p>
+											<div class="form-group">
+												<input type="text" class="form-control infobox" name="userid"
+													placeholder="minimal 8 karakter" value="" />
+												<p style="color: red;" class="error"> wajib
+													diisi</p>
+											</div>
+
+											<!--konfrmasi password-->
+											<p style="margin: 0%; padding-left: 4%;">*Konfirmasi Password :</p>
+											<div class="form-group">
+												<input type="text" class="form-control infobox" name="userid"
+													placeholder="minimal 8 karakter " value="" />
+												<p style="color: red;" class="error"> wajib
+													diisi</p>
+											</div>
+
+										</div>
+										<div class="col-md-5">
+											<img class="img-fluid " src="pic/orang.png"
+												style="max-width: 80%; height: auto; ">
+
+
+										</div>
+									</div>
+									<button type="button" class="btnSubmit submit" value="submit">Daftar</button>
+								</div>
 							</div>
 						</div>
 					</div>
 					<!--kotak form kiri-->
-					<div class="col border-left" style=" padding: 2%;">
+					<div class="col-md-5 border-left" style=" padding: 2%;">
+						<div class="note rounded-top">
+							<p style="text-align: center;">Quick</p>
+						</div>
+						<br>
 						<p style="text-align: center;">Sudah punya account? </p>
 						<div class="d-flex justify-content-center">
 
@@ -355,8 +470,13 @@
 					halaman ini di kerjakan oleh<br>
 					nama : Naufal S. A. Sunandar<br>
 					nrp : 0521194000104<br>
+					Pemrograman Web D
+				</p>
 
 			</div>
+
+
+
 		</div>
 
 
