@@ -9,9 +9,9 @@
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-
 	<script type="text/javascript" src="js/jquery.seat-charts.js"></script>
 	<link rel="stylesheet" href="css/jquery.seat-charts.css">
+	<link rel="stylesheet" href="css/editan.css">
 	<style>
 		a.biru {
 			color: rgb(53, 53, 91);
@@ -146,6 +146,15 @@
 			background: rgb(53, 53, 91);
 
 		}
+
+		.form-rounded {
+			border-radius: 1rem;
+		}
+
+		botton.white {
+			background-color: #fff;
+			color: black;
+		}
 	</style>
 
 	<script>
@@ -249,17 +258,11 @@
 
 		</div>
 
-		<!-- kotak konten -->
-
 		<div class="alert alert-primary">
 			booking tiketmu sekarang!
 		</div>
 
-
-
-
-
-		<!-- kotak experiment -->
+		<!-- kotak konten -->
 		<div class="container-fluid">
 			<div class="row">
 				<!-- kotak seat -->
@@ -287,7 +290,60 @@
 
 					</div>
 				</div>
+			</div>
 
+			<div class="container-fluid" style="margin-top: 5%;">
+				<div class="row">
+					<!--kotak form kanan-->
+					<div class="col border-right" style=" padding: 2%;">
+						<p style="text-align: center;">registrasi pengguna baru</p>
+						<div class="form-group row">
+							<label for="usr">Nama Lengkap : </label>
+							<div class="col-xs-8">
+								<input type="text" class="form-control form-rounded" id="usr"
+									style="background-color: #fdfdfd;">
+							</div>
+						</div>
+						<div class="form-group row">
+							<div class="col-xs-4">
+								<label for="usr">email :</label>
+							</div>
+							<div class="col-xs-8">
+								<input type="email" class="form-control form-rounded" id="mail">
+							</div>
+						</div>
+						<div class="form-group row">
+							<label for="pwd">Password :</label>
+							<div class="col-xs-8">
+								<input type="password" class="form-control form-rounded" id="pwd">
+							</div>
+						</div>
+					</div>
+					<!--kotak form kiri-->
+					<div class="col border-left" style=" padding: 2%;">
+						<p style="text-align: center;">Sudah punya account? </p>
+						<div class="d-flex justify-content-center">
+
+
+							<button type="button" class="btn btn-light btn-lg"><img class="img-fluid"
+									style="width: 8%; padding-right: 2%;"
+									src="https://upload.wikimedia.org/wikipedia/commons/5/53/Google_%22G%22_Logo.svg">
+								Sign in Dengan Google</botton>
+						</div>
+						<div class="d-flex justify-content-center">
+							<button type="button" class="btn btn-light btn-lg">
+
+								<img class="img-fluid" style="width: 8%; padding-right: 2%;"
+									src="https://upload.wikimedia.org/wikipedia/commons/5/51/Facebook_f_logo_%282019%29.svg">
+
+								Sign in Dengan Facebook
+
+
+								</botton>
+						</div>
+
+					</div>
+				</div>
 			</div>
 
 
@@ -295,7 +351,11 @@
 		<div class="container-fluid">
 
 			<div class="jumbotron">
-				hayoooooooo
+				<p style="text-align: center;">
+					halaman ini di kerjakan oleh<br>
+					nama : Naufal S. A. Sunandar<br>
+					nrp : 0521194000104<br>
+
 			</div>
 		</div>
 
